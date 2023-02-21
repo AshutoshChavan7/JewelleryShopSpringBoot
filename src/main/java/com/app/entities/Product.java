@@ -1,6 +1,8 @@
 package com.app.entities;
 
 import java.sql.Blob;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.persistence.ManyToOne;
@@ -25,8 +27,9 @@ public class Product extends BaseEntity{
 	private double price;
 	@ManyToOne
 	private SubCategory category;
-	@ManyToMany
-	private Order order;
+	
+	
+	
 	
 	
 

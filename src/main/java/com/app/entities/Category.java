@@ -1,5 +1,8 @@
 package com.app.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -17,5 +20,8 @@ import lombok.ToString;
 public class Category extends BaseEntity {
 	
 	private String categoryName;
+	
+	@OneToMany(mappedBy = "category" ,cascade= CascadeType.ALL,orphanRemoval = true)
+	private List <SubCategory> subCatList = new ArrayList<SubCategory>();
 		
 }
