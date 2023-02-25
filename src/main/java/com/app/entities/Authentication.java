@@ -23,6 +23,6 @@ public class Authentication extends BaseEntity {
 	private String mailId;
 	@Column(length=20,nullable=false,unique=true)
 	private String password;
-	@Enumerated(EnumType.STRING)
-	private Role role;
+//	@Enumerated(EnumType.STRING)
+	private String role;
 }

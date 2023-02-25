@@ -23,7 +23,7 @@ public class Ordar extends BaseEntity {
 	
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="product_order",joinColumns= @JoinColumn(name="order_id")
 	,inverseJoinColumns = @JoinColumn(name="Prduct_id"))
 	private Set<Product> productset= new HashSet<Product>();

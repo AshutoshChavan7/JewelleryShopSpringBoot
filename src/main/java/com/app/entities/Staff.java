@@ -21,10 +21,8 @@ import lombok.ToString;
 
 
 @Entity
-public class Staff {
+public class Staff extends BaseEntity {
 
-@Column(length = 50)
-private String email;
 
 @Column(length = 20)
 private String staffName;
@@ -43,5 +41,9 @@ private Manager manager;
 @JoinColumn(name="subCategory_id")
 private SubCategory productSubCategory; 
 
+@OneToOne
+@JoinColumn(name="authentication")
+private Authentication athentication;
 	
+
 }

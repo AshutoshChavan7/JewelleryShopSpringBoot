@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>RESTJewelleryShop</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>RESTJewelleryShop</name>
-	<description>BackEnd for JewelleryShop</description>
+	<artifactId>RestJewelleryShop</artifactId>
+	<version>0.0.1</version>
+	<name>RestJewelleryShop</name>
+	<description>Backend for Jewellery Shop</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -51,6 +51,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+<groupId>org.springdoc</groupId>
+<artifactId>springdoc-openapi-ui</artifactId>
+<version>1.6.4</version>
+</dependency>
 	</dependencies>
 
 	<build>

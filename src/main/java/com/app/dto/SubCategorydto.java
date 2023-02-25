@@ -1,6 +1,4 @@
-package com.app.entities;
-
-import javax.persistence.*;
+package com.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,16 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Getter
 @Setter
-
-public class SubCategory extends BaseEntity {
-
+public class SubCategorydto {
+	
 	private String subcategoryName;
-	@ManyToOne
-	private Category category;
+	private String Category;
+
 }
