@@ -1,4 +1,4 @@
-package com.app.Service;
+package com.app.service;
 
 import org.springframework.http.ResponseEntity;
 

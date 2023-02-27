@@ -15,5 +15,9 @@ public class SubCategorydto {
 	
 	private String subcategoryName;
 	private String Category;
+	public Object getSubcategoryName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

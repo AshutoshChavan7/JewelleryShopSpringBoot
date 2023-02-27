@@ -112,7 +112,7 @@ public class Ordar extends BaseEntity {
 
 
 	public Ordar(Integer id) {
-		super(id);
+		super();
 		// TODO Auto-generated constructor stub
 	}
 	

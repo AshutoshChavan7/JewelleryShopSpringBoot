@@ -20,4 +20,5 @@ public class SubCategory extends BaseEntity {
 	private String subcategoryName;
 	@ManyToOne
 	private Category category;
+	
 }

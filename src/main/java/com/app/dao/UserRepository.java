@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.app.entities.Authentication;
 
 @Repository
-public interface UserRepository extends JpaRepository<Authentication, Long> {
+public interface UserRepository extends JpaRepository<Authentication, Integer> {
 	
 	
 	

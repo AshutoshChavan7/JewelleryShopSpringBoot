@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.Service.CategoryService;
 import com.app.dto.RegisterRequest;
 import com.app.dto.SubCategorydto;
 import com.app.dto.UserResponseDto;
+import com.app.service.CategoryService;
 
 @RestController 
 @RequestMapping("/Category")
