@@ -2,6 +2,7 @@ package com.app.controllers;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,11 +10,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.entities.Product;
 
+import com.app.dto.ProductDto;
+import com.app.dto.ProductRespDto;
+import com.app.dto.RegisterRequest;
+import com.app.dto.SubCategoryResponseDto;
+import com.app.dto.UserResponseDto;
+import com.app.entities.Product;
+import com.app.entities.SubCategory;
+
+//import com.app.pojos.Note;
+//import com.app.pojos.User;
 import com.app.service.ProductService;
 
 @RestController
@@ -21,7 +34,7 @@ import com.app.service.ProductService;
 public class ProductController {
 
 	@Autowired
-	 ProductService productService;
+	private ProductService productService;
 	
 	
 	@GetMapping
@@ -32,26 +45,19 @@ public class ProductController {
 		
 	}
 	
-//	@DeleteMapping("/{empId}")
-//	public ApiResponse deleteEmpDetails(@PathVariable Long empId) {
-//		System.out.println("in del emp " + empId);
-//		return new ApiResponse(empService.deleteEmpDetails(empId));
-//	}
-	@GetMapping("/category/{category_id}")
-	public ResponseEntity<?> getSubCategoryByCategory( @PathVariable Iterable<Integer> catId){
-	
-		return new ResponseEntity<>(productService.getSubCategoryByCategory( catId), HttpStatus.OK);
+
+	@GetMapping("/sub_categoryid/{sub_Category_id}")
+	public List<Product> getProductDetailsByUserId(@PathVariable Long sub_Category_id){
+		SubCategory subCat = productService.fetchSubCatrgoryDetails(sub_Category_id);
+		return productService.fetcProductDetailsBySubCatrgoryId(subCat);
 	}
+
 	
-	@GetMapping("/category/sub_category/{subcategory_id}")
-	public ResponseEntity<?> getProductBySubCategory( @PathVariable Iterable<Integer> subCatId){
+	@PostMapping("/add")
+	public ResponseEntity<?> addProduct(@RequestBody ProductDto productdto){
 		
-		return new ResponseEntity<>(productService.getProductBySubCategory(subCatId), HttpStatus.OK);
+		ProductRespDto savedProd = productService.addProduct(productdto);
+		return new ResponseEntity<>(savedProd, HttpStatus.OK);
 	}
 	
-//	@GetMapping("/sub_category/{subcategory_id}")
-//	public List<Product> getProductDetailsByUserId(@PathVariable Long userId){
-//		Product product = ProductService.fetchUserDetails(userId);
-//		return ProductService.fetcProductDetailsByUserId(product);
-//	}
 }

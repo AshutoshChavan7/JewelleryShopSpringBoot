@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.CategoryRepository;
+import com.app.dao.CategoryRepository2;
 import com.app.dto.SubCategoryResponseDto;
 import com.app.dto.SubCategorydto;
 import com.app.entities.*;
@@ -17,8 +18,11 @@ import com.app.entities.*;
 public class CategoryServiceImpl implements CategoryService  {
 	
 	@Autowired
-	CategoryRepository catrepo;
-
+	CategoryRepository2 catrepo;
+//
+//	SubCategory sub=new SubCategory();
+//	sub.setSubcategoryName(request.getSubcategoryName());
+//	sub.setCategory(new Category(request.getCategory(), null));
 	@Override
 	public SubCategoryResponseDto insertCategory(SubCategorydto request) {
 		// TODO Auto-generated method stub

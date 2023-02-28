@@ -9,9 +9,12 @@ import org.springframework.data.jpa.repository.support.JpaRepositoryImplementati
 import com.app.entities.Product;
 import com.app.entities.SubCategory;
 
-public interface ProductRepository extends JpaRepository<Product, Integer> {
-	  
-	 
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+	List<Product> findBySubCategory(SubCategory subCategory);  
+	
+//	List<Product> findBySubCategory(SubCategory sub_category_id);
 
 
 	

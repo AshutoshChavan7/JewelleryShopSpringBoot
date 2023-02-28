@@ -20,5 +20,27 @@ public class SubCategory extends BaseEntity {
 	private String subcategoryName;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Category category;
+	public String getSubcategoryName() {
+		return subcategoryName;
+	}
+	public void setSubcategoryName(String subcategoryName) {
+		this.subcategoryName = subcategoryName;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public SubCategory(String subcategoryName, Category category) {
+		super();
+		this.subcategoryName = subcategoryName;
+		this.category = category;
+	}
+	public SubCategory() {
+		super();
+	}
+	
+	
 	
 }
