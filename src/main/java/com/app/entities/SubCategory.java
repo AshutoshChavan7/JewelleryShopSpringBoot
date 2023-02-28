@@ -18,7 +18,7 @@ import lombok.ToString;
 public class SubCategory extends BaseEntity {
 
 	private String subcategoryName;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Category category;
 	
 }

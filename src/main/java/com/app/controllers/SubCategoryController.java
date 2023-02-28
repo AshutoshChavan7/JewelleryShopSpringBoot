@@ -22,10 +22,8 @@ public class SubCategoryController {
 	@PostMapping("/insert")
 	public ResponseEntity<?> addSubCategory(@RequestBody SubCategorydto request){
 		
-		System.out.println("in category registration"+request);
-//		
+		System.out.println("in category registration"+request);	
            
-//
 	return ResponseEntity.ok(catservice.insertCategory(request));
 		
 	}

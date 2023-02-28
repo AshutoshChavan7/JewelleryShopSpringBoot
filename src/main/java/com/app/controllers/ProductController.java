@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entities.Product;
-import com.app.pojos.Note;
-import com.app.pojos.User;
+
 import com.app.service.ProductService;
 
 @RestController

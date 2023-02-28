@@ -17,7 +17,7 @@ public interface ProductService {
 
 
 
-	static Product fetchUserDetails(Long userId) ;
+	
 
 
 
