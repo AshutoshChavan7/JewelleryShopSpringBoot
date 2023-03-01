@@ -39,5 +39,10 @@ public class UserServicesImpl implements UserServices {
 		
 		
 	}
+	
+	public Authentication validateUser(String email, String password) {
+		// TODO Auto-generated method stub
+		return repository.getUser(email, password);
+	}
 
 }

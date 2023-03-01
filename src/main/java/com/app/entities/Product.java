@@ -13,8 +13,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Getter
 @Setter
