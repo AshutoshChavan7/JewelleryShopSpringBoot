@@ -24,11 +24,6 @@ public class CustomerContoller {
 		
 	}
 	
-	@GetMapping("/main")
-	public Customer getCustomerDetails() {
-		return null;
-	}
-	
 	
 
 }
