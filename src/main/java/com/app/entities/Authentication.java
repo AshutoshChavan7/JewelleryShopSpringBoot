@@ -11,12 +11,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
+@Entity
 public class Authentication extends BaseEntity {
      
 	@Column(length=20,nullable = false,unique = true)
@@ -24,6 +25,7 @@ public class Authentication extends BaseEntity {
 	@Column(length=20,nullable=false,unique=true)
 	private String password;
 //	@Enumerated(EnumType.STRING)
+	@Column(name="role")
 	private String role;
 	public String getMailId() {
 		return mailId;

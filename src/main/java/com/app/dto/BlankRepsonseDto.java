@@ -1,6 +1,4 @@
-package com.app.entities;
-
-import javax.persistence.Embeddable;
+package com.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,12 +11,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Embeddable
-public class Address {
+public class BlankRepsonseDto {
 	
-	private String city;
-	
-	private String state;
-	
-	private int zip;
+	private String msg;
+
 }

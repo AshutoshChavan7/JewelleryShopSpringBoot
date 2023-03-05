@@ -9,12 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
+import com.app.dao.CustomerRepository;
+import com.app.dao.ManagerRepository;
+import com.app.dao.StaffRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.RegisterRequest;
 import com.app.dto.UserDTO;
 import com.app.dto.UserResponseDto;
 import com.app.entities.Authentication;
+import com.app.entities.Customer;
+import com.app.entities.Manager;
 import com.app.entities.Role;
+import com.app.entities.Staff;
+import com.app.entities.SubCategory;
 
 @Service
 @Transactional
@@ -22,6 +29,13 @@ public class UserServicesImpl implements UserServices {
 
 	@Autowired
 	UserRepository repository;
+	
+	@Autowired
+	ManagerRepository manrepo;
+	@Autowired
+	CustomerRepository cusrepo;
+	@Autowired
+	StaffRepository staffrepo;
 	
 //	@Autowired
 //	private PasswordEncoder passEncoder;
@@ -59,6 +73,31 @@ public class UserServicesImpl implements UserServices {
 		}
 	   return null;
 	}
+
+
+	@Override
+	public Manager fetchManager(Authentication id) {
+		// TODO Auto-generated method stub
+		return manrepo.findManagerByAuthentication(id);
+	}
+
+
+	@Override
+	public Staff fetchStaff(Authentication id) {
+		// TODO Auto-generated method stub
+		//return staffrepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Staff not found"));
+		System.out.println("inside fetchstaff method"+id);
+		return staffrepo.findStaffByAuthentication(id);
+	}
+
+
+	@Override
+	public Customer fetchCustomer(Authentication id) {
+		// TODO Auto-generated method stub
+		return cusrepo.findCustomerByAuthentication(id);
+	}
+
+
 	
 	
 //	@Override

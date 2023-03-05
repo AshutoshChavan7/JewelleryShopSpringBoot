@@ -7,9 +7,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,14 +22,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 
-
+@Entity
 public class Manager extends BaseEntity {
 
 
@@ -40,10 +45,10 @@ public class Manager extends BaseEntity {
 	private Category productCategory;
 	
 	@OneToOne
-	@JoinColumn(name="authentication")
 	private Authentication athentication;
-
-	@OneToMany(mappedBy = "manager" ,cascade= CascadeType.ALL,orphanRemoval = true)
-	private List <Staff> staffList = new ArrayList<Staff>();
+     
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "manager",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
+//	private List <Staff> staffList=new ArrayList<Staff>();
 
 }

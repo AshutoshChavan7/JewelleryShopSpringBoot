@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,17 +24,19 @@ public class Category extends BaseEntity {
 
 	private String categoryName;
 	
-	@OneToMany(mappedBy = "category" ,cascade= CascadeType.ALL,orphanRemoval = true)
-	private List <SubCategory> subCatList = new ArrayList<SubCategory>();
+	
+//	@OneToMany(mappedBy = "category" ,cascade= CascadeType.ALL,orphanRemoval = true)
+//	
+//	private List <SubCategory> subCatList = new ArrayList<SubCategory>();
 
 	public Category() {
 		super();
 	}
 
-	public Category(String categoryName, List<SubCategory> subCatList) {
+	public Category(String categoryName) {
 		super();
 		this.categoryName = categoryName;
-		this.subCatList = subCatList;
+		//this.subCatList = subCatList;
 	}
 	
 		

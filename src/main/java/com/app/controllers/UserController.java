@@ -24,14 +24,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.AuthResp;
+import com.app.dto.BlankRepsonseDto;
 import com.app.dto.LoginDTO;
 import com.app.dto.OTPVerifyUpdatePassword;
 import com.app.dto.UserDTO;
 import com.app.entities.Authentication;
+import com.app.entities.Customer;
+import com.app.entities.Manager;
 import com.app.entities.Role;
+import com.app.entities.Staff;
 import com.app.entities.User;
 
-import com.app.service.CustomSecurityUserDetails;
+
 import com.app.service.UserServices;
 
 
@@ -61,7 +65,7 @@ public class UserController {
 	public UserController() {
 		System.out.println("in def ctor " + getClass());
 	}
-
+       
 	// add req handling method to forward the clnt to login form
 	@GetMapping("/login")
 	public String showLoginForm() {
@@ -71,35 +75,47 @@ public class UserController {
 
 	// add req handling method for --authentication n authorization
 	@PostMapping("/login")
-	public String processLoginForm(@RequestParam String email, 
+	public ResponseEntity<?> processLoginForm(@RequestParam String email, 
 			@RequestParam String pass, Model map,HttpSession session) {
 		System.out.println("in process login form " + email + " " + pass + " " + map);
-		try {
+	
 			Authentication auth = userService.validateUser(email, pass);
+			
+			System.out.println(auth);
+			
+			long authid=auth.getId();
+			
+			int i=(int)authid;
 			//System.out.println(auth);
 //			System.out.println(auth.getRole());
 //			System.out.println(auth.getRole()=="Manager");
-			session.setAttribute("user_details", auth);
+			
 			if(auth!=null) {
 			if (auth.getRole().equals("Manager")) {
-				return "redirect:/manager/main";	
+				Manager mgr=userService.fetchManager(auth);
+				System.out.println(mgr);
+				session.setAttribute("user_details", mgr);
+			    return new ResponseEntity<>(mgr, HttpStatus.OK);	
 				
 			}
 			else if (auth.getRole().equals("Customer")) {
-				return "redirect:/customer/main";
+				Customer cus=userService.fetchCustomer(auth);
+				session.setAttribute("user_details", cus);
+				return new ResponseEntity<>(cus,HttpStatus.OK);
 			}
 			
-			else
-				return "redirect:/staff/main";
+			else if (auth.getRole().equals("Staff")) {
+				System.out.println("inside staff of user controller");
+				Staff stff=userService.fetchStaff(auth);
+				session.setAttribute("user_details", stff);
+				return new ResponseEntity<>(stff,HttpStatus.OK);
+			}
 			}
 			
-			return "Wrong Credentials please retry";
-
-		} catch (RuntimeException e) {
-			System.out.println("err in " + getClass() + " " + e);
-			map.addAttribute("mesg", "Invalid Login , Please Retry!!!!");
-			return "/users/login";
-		}
+		
+		BlankRepsonseDto rsdto=new BlankRepsonseDto("Invalid Login!! Please retry...");
+		
+		return new ResponseEntity<>(rsdto,HttpStatus.NO_CONTENT);
 	}
 	
 	@GetMapping("/logout")
@@ -109,7 +125,6 @@ public class UserController {
 		map.addAttribute("user_details", session.getAttribute("user_details"));
 		//invalidate session
 		session.invalidate();
-		//set refresh header : for auto redirection after delay
 		resp.setHeader("refresh", "5;url="+rq.getContextPath());
 		return "/user/logout";
 	}
