@@ -17,8 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @ToString
 @Getter
 @Setter
@@ -50,6 +49,62 @@ private SubCategory productSubCategory;
 @OneToOne
 @JoinColumn(name="authentication")
 private Authentication athentication;
+
+public String getStaffName() {
+	return staffName;
+}
+
+public void setStaffName(String staffName) {
+	this.staffName = staffName;
+}
+
+public int getContactNo() {
+	return contactNo;
+}
+
+public void setContactNo(int contactNo) {
+	this.contactNo = contactNo;
+}
+
+public Address getAddress() {
+	return address;
+}
+
+public void setAddress(Address address) {
+	this.address = address;
+}
+
+public SubCategory getProductSubCategory() {
+	return productSubCategory;
+}
+
+public void setProductSubCategory(SubCategory productSubCategory) {
+	this.productSubCategory = productSubCategory;
+}
+
+public Authentication getAthentication() {
+	return athentication;
+}
+
+public void setAthentication(Authentication athentication) {
+	this.athentication = athentication;
+}
+
+public Staff(String staffName, int contactNo, Address address, SubCategory productSubCategory,
+		Authentication athentication) {
+	super();
+	this.staffName = staffName;
+	this.contactNo = contactNo;
+	this.address = address;
+	this.productSubCategory = productSubCategory;
+	this.athentication = athentication;
+}
+
+public Staff() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 	
+
 
 }

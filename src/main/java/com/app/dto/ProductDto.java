@@ -27,6 +27,7 @@ public class ProductDto {
 
 
 	//category_id, image_url, price, product_name, sub_category_id, weight
+	private Long id;
 	
 	private String productname;
 
@@ -40,98 +41,85 @@ public class ProductDto {
 	
 	private String imageurl;
 
-	
-	
-	
-	
-
-
-	public ProductDto(String productname, Long subCategory, Long category, double price, double weight,
-			String imageurl) {
-		super();
-		this.productname = productname;
-		this.subCategory_Id = subCategory;
-		this.category_Id = category;
-		this.price = price;
-		this.weight = weight;
-		this.imageurl = imageurl;
+	public Long getId() {
+		return id;
 	}
 
-
-	public ProductDto() {
-		
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	
-
-
-	public Long getSubCategory_Id() {
-		return subCategory_Id;
-	}
-
-
-	public void setSubCategory_Id(Long subCategory_Id) {
-		this.subCategory_Id = subCategory_Id;
-	}
-
 
 	public String getProductname() {
 		return productname;
 	}
 
-
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
 
+	public Long getSubCategory_Id() {
+		return subCategory_Id;
+	}
 
-	
-
+	public void setSubCategory_Id(Long subCategory_Id) {
+		this.subCategory_Id = subCategory_Id;
+	}
 
 	public Long getCategory_Id() {
 		return category_Id;
 	}
 
-
 	public void setCategory_Id(Long category_Id) {
 		this.category_Id = category_Id;
 	}
-
 
 	public double getPrice() {
 		return price;
 	}
 
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
 
 	public double getWeight() {
 		return weight;
 	}
 
-
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-
 
 	public String getImageurl() {
 		return imageurl;
 	}
 
-
 	public void setImageurl(String imageurl) {
 		this.imageurl = imageurl;
 	}
-	
-	
+
+	public ProductDto(Long id, String productname, Long subCategory_Id, Long category_Id, double price, double weight,
+			String imageurl) {
+		super();
+		this.id = id;
+		this.productname = productname;
+		this.subCategory_Id = subCategory_Id;
+		this.category_Id = category_Id;
+		this.price = price;
+		this.weight = weight;
+		this.imageurl = imageurl;
+	}
+
+	public ProductDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	
 	
+	
+
+
 	
 
 

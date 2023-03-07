@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService  {
 		// TODO Auto-generated method stub
 		SubCategory sub=new SubCategory();
 		sub.setSubcategoryName(request.getSubcategoryName());
-		sub.setCategory(new Category(request.getCategory(), null));
+		sub.setCategory(new Category(request.getCategory()));
 		
 		SubCategory persistedcategory= catrepo.save(sub);
 		

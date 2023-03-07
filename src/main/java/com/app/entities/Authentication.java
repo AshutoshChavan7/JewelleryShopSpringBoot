@@ -12,8 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @ToString
 @Getter
 @Setter
@@ -44,6 +43,16 @@ public class Authentication extends BaseEntity {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public Authentication(String mailId, String password, String role) {
+		super();
+		this.mailId = mailId;
+		this.password = password;
+		this.role = role;
+	}
+	public Authentication() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

@@ -38,6 +38,8 @@ private Authentication athentication;
 //@JoinColumn(name="order")
 private Ordar order;
 
+@OneToOne
+private CartItem cart;
 
 
 	

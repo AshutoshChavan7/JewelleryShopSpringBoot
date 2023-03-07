@@ -6,13 +6,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 @ToString
 public class BlankRepsonseDto {
 	
 	private String msg;
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public BlankRepsonseDto(String msg) {
+		super();
+		this.msg = msg;
+	}
+
+	public BlankRepsonseDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 
 }

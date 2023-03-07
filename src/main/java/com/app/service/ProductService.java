@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.app.dto.ProductDto;
 import com.app.dto.ProductRespDto;
 import com.app.entities.Category;
@@ -22,8 +24,14 @@ public interface ProductService {
 	List<Product> fetcProductDetailsByCategoryAndSubCategoryId(Category cat, SubCategory subCat);
 
 	ProductRespDto addProduct(ProductDto productdto);
+	
+	String saveImage(Long userId, MultipartFile imgFile) throws IOException;
 
-
+	byte[] restoreImage(Long patId) throws IOException;
+	
+	public Product fetchProductById(Long prod_id);
+	
+//	byte[] restoreImage(Long patId) throws IOException;
 	
 
 
