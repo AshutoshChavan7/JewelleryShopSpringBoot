@@ -36,10 +36,10 @@ private int contactNo;
 @Embedded
 private Address address;
 
-//@ManyToOne
-//@JoinColumn(name="manager_id")
-//@JsonProperty(access = Access.WRITE_ONLY)
-//private Manager manager;
+  @ManyToOne
+@JoinColumn(name="manager_id")
+@JsonProperty(access = Access.WRITE_ONLY)
+private Manager manager;
 
 @OneToOne
 @JoinColumn(name="subCategory_id")

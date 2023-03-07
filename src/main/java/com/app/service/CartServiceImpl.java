@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -66,5 +67,35 @@ public class CartServiceImpl implements CartService {
 		return updatedQuantity;
 		
 	}
+	
+	// Add a method to get list of cart Items
+	@Override
+	public List<CartItem> listCartItems(Long customerId) {
+		//log.info("In shopping cart service : list cart items method");
+		Customer customer = custRepo.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("Invalid customer Id"));
+	
+			return cartRepo.findByCustomer(customer);
+		
+	}
+
+	@Override
+	public void removeProduct(Long productId, Long customerId) {
+		//log.info("In shopping cart service : removeProduct");
+		Customer customer = custRepo.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("Invalid customer Id"));
+		Product product = prodService.fetchProductById(productId);
+		cartRepo.deleteByCustomerAndProduct(customer, product);
+	}
+	
+//	@Override
+//	public void removeProduct(Long productId, Long customerId) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
+//	@Override
+//	public List<CartItem> listCartItems(Long id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 }

@@ -78,6 +78,7 @@ public class UserServicesImpl implements UserServices {
 	@Override
 	public Manager fetchManager(Authentication id) {
 		// TODO Auto-generated method stub
+		System.out.println("inside fetchmanager");
 		return manrepo.findManagerByAuthentication(id);
 	}
 

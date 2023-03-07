@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Getter
-@Setter
+
 public class StaffDto {
 	
+	private Long id ;
 
 	private String staffName;
 
@@ -30,6 +30,8 @@ public class StaffDto {
 	private Long subcategoryId; 
 
 	
+	
+
 	private String email;
 	private String password;
 	
@@ -38,6 +40,25 @@ public class StaffDto {
 	private String state;
 	
 	private int zip;
+	
+	private Long manager;
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getManager() {
+		return manager;
+	}
+
+	public void setManager(Long manager) {
+		this.manager = manager;
+	}
 
 	public String getStaffName() {
 		return staffName;

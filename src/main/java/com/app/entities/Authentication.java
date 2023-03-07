@@ -14,8 +14,6 @@ import lombok.ToString;
 
 
 @ToString
-@Getter
-@Setter
 @Entity
 public class Authentication extends BaseEntity {
      

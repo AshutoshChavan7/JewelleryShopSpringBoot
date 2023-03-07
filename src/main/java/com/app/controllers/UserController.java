@@ -16,6 +16,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ import com.app.dto.AuthResp;
 import com.app.dto.BlankRepsonseDto;
 import com.app.dto.LoginDTO;
 import com.app.dto.OTPVerifyUpdatePassword;
+import com.app.dto.ProductDto;
 import com.app.dto.UserDTO;
 import com.app.entities.Authentication;
 import com.app.entities.Customer;
@@ -43,6 +45,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
 	// dep : service layer i/f
@@ -75,11 +78,10 @@ public class UserController {
 
 	// add req handling method for --authentication n authorization
 	@PostMapping("/login")
-	public ResponseEntity<?> processLoginForm(@RequestParam String email, 
-			@RequestParam String pass, Model map,HttpSession session) {
-		System.out.println("in process login form " + email + " " + pass + " " + map);
+	public ResponseEntity<?> processLoginForm(@RequestBody LoginDTO lo) {
+		System.out.println("in process login form " + lo.getEmail() + " " + lo.getPassword() );
 	
-			Authentication auth = userService.validateUser(email, pass);
+			Authentication auth = userService.validateUser(lo.getEmail(), lo.getPassword());
 			
 			System.out.println(auth);
 			
@@ -92,22 +94,23 @@ public class UserController {
 			
 			if(auth!=null) {
 			if (auth.getRole().equals("Manager")) {
+				System.out.println("inside mananger");
 				Manager mgr=userService.fetchManager(auth);
 				System.out.println(mgr);
-				session.setAttribute("user_details", mgr);
+			//	session.setAttribute("user_details", mgr);
 			    return new ResponseEntity<>(mgr, HttpStatus.OK);	
 				
 			}
 			else if (auth.getRole().equals("Customer")) {
 				Customer cus=userService.fetchCustomer(auth);
-				session.setAttribute("user_details", cus);
+			//	session.setAttribute("user_details", cus);
 				return new ResponseEntity<>(cus,HttpStatus.OK);
 			}
 			
 			else if (auth.getRole().equals("Staff")) {
 				System.out.println("inside staff of user controller");
 				Staff stff=userService.fetchStaff(auth);
-				session.setAttribute("user_details", stff);
+			//	session.setAttribute("user_details", stff);
 				return new ResponseEntity<>(stff,HttpStatus.OK);
 			}
 			}
