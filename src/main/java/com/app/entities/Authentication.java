@@ -17,7 +17,7 @@ import lombok.ToString;
 @Entity
 public class Authentication extends BaseEntity {
      
-	@Column(length=20,nullable = false,unique = true)
+	@Column(nullable = false,unique = true)
 	private String mailId;
 	@Column(length=20,nullable=false,unique=true)
 	private String password;

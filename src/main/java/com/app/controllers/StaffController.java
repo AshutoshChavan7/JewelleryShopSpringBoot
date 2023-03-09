@@ -9,8 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,7 @@ import com.app.service.CustomerService;
 import com.app.service.StaffSevice;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/staff")
 public class StaffController {
 
@@ -42,13 +45,13 @@ public ResponseEntity<?> addStaff(@RequestBody StaffDto staff){
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getall")
-	public List<Staff> getAllStaffs(@RequestParam Long Id){
+	@GetMapping("/getall/{Id}")
+	public List<Staff> getAllStaffs(@PathVariable Long Id){
 		return service.getStaff(Id);
 	}
 	
-	@DeleteMapping("/delete")
-	public ResponseEntity<?> deleteStaff(@RequestParam Long Id){
+	@DeleteMapping("/delete/{Id}")
+	public ResponseEntity<?> deleteStaff(@PathVariable Long Id){
 		Staff stfStaff=service.removeStaff(Id);
 		return new ResponseEntity<>(stfStaff, HttpStatus.OK);
 	}

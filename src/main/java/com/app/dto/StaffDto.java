@@ -25,7 +25,7 @@ public class StaffDto {
 	private String staffName;
 
 	
-	private int contactNo;
+	private String contactNo;
 
 	private Long subcategoryId; 
 
@@ -68,11 +68,11 @@ public class StaffDto {
 		this.staffName = staffName;
 	}
 
-	public int getContactNo() {
+	public String getContactNo() {
 		return contactNo;
 	}
 
-	public void setContactNo(int contactNo) {
+	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
 
@@ -124,7 +124,7 @@ public class StaffDto {
 		this.zip = zip;
 	}
 
-	public StaffDto(String staffName, int contactNo, Long subcategoryId, String email, String password, String city,
+	public StaffDto(String staffName, String contactNo, Long subcategoryId, String email, String password, String city,
 			String state, int zip) {
 		super();
 		this.staffName = staffName;

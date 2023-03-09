@@ -30,8 +30,8 @@ public class Staff extends BaseEntity {
 @Column(length = 20)
 private String staffName;
 
-@Column(length= 10)
-private int contactNo;
+
+private String contactNo;
 
 @Embedded
 private Address address;
@@ -58,11 +58,11 @@ public void setStaffName(String staffName) {
 	this.staffName = staffName;
 }
 
-public int getContactNo() {
+public String getContactNo() {
 	return contactNo;
 }
 
-public void setContactNo(int contactNo) {
+public void setContactNo(String contactNo) {
 	this.contactNo = contactNo;
 }
 
@@ -90,7 +90,7 @@ public void setAthentication(Authentication athentication) {
 	this.athentication = athentication;
 }
 
-public Staff(String staffName, int contactNo, Address address, SubCategory productSubCategory,
+public Staff(String staffName, String contactNo, Address address, SubCategory productSubCategory,
 		Authentication athentication) {
 	super();
 	this.staffName = staffName;
