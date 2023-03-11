@@ -30,8 +30,8 @@ public class Staff extends BaseEntity {
 @Column(length = 20)
 private String staffName;
 
-
-private String contactNo;
+@Column(length= 10)
+private int contactNo;
 
 @Embedded
 private Address address;
@@ -58,11 +58,11 @@ public void setStaffName(String staffName) {
 	this.staffName = staffName;
 }
 
-public String getContactNo() {
+public int getContactNo() {
 	return contactNo;
 }
 
-public void setContactNo(String contactNo) {
+public void setContactNo(int contactNo) {
 	this.contactNo = contactNo;
 }
 
@@ -90,19 +90,31 @@ public void setAthentication(Authentication athentication) {
 	this.athentication = athentication;
 }
 
-public Staff(String staffName, String contactNo, Address address, SubCategory productSubCategory,
-		Authentication athentication) {
-	super();
-	this.staffName = staffName;
-	this.contactNo = contactNo;
-	this.address = address;
-	this.productSubCategory = productSubCategory;
-	this.athentication = athentication;
-}
+
 
 public Staff() {
 	super();
 	// TODO Auto-generated constructor stub
+}
+
+public Staff(Long id) {
+	super(id);
+	// TODO Auto-generated constructor stub
+}
+
+public Staff(Long id, String staffName, int contactNo, Address address, Manager manager, SubCategory productSubCategory,
+		Authentication athentication) {
+	super(id);
+	this.staffName = staffName;
+	this.contactNo = contactNo;
+	this.address = address;
+	this.manager = manager;
+	this.productSubCategory = productSubCategory;
+	this.athentication = athentication;
+}
+
+public void setManager(Manager manager) {
+	this.manager = manager;
 }
 	
 

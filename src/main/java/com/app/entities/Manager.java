@@ -23,7 +23,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -46,9 +46,62 @@ public class Manager extends BaseEntity {
 	
 	@OneToOne
 	private Authentication athentication;
+
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Category getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(Category productCategory) {
+		this.productCategory = productCategory;
+	}
+
+	public Authentication getAthentication() {
+		return athentication;
+	}
+
+	public void setAthentication(Authentication athentication) {
+		this.athentication = athentication;
+	}
+
+	public Manager(Long id, String managerName, Address address, Category productCategory,
+			Authentication athentication) {
+		super(id);
+		this.managerName = managerName;
+		this.address = address;
+		this.productCategory = productCategory;
+		this.athentication = athentication;
+	}
+
+	public Manager() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Manager(Long id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
      
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "manager",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
 //	private List <Staff> staffList=new ArrayList<Staff>();
 
+	
+	
 }

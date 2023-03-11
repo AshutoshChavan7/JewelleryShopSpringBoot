@@ -86,7 +86,7 @@ public class ManagerServiceImpl implements ManagerService {
 				  arr[5]=arr[5]+1;
 				  continue;
 			}
-			else if(p.getSubCategory().getSubcategoryName().equals("Neaklace")) {
+			else if(p.getSubCategory().getSubcategoryName().equals("Neacklace")) {
 				
 				  arr[6]=arr[6]+1;
 				  continue;

@@ -38,6 +38,14 @@ public class Category extends BaseEntity {
 		this.categoryName = categoryName;
 		//this.subCatList = subCatList;
 	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	
 		
 	

@@ -16,105 +16,49 @@ import lombok.ToString;
 @Entity
 public class Ordar extends BaseEntity {
 	
-	@Column(name="totalqty")
-	private int totalQuantity;
+	@OneToOne
+	private Customer customer;
 	@Column(name="totalamount")
 	private double totalAmount;
-	
-	
-	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="product_order",joinColumns= @JoinColumn(name="order_id")
-	,inverseJoinColumns = @JoinColumn(name="Prduct_id"))
-	private Set<Product> productset= new HashSet<Product>();
-
-
-
-	public int getTotalQuantity() {
-		return totalQuantity;
+	public Customer getCustomer() {
+		return customer;
 	}
-
-
-
-	public void setTotalQuantity(int totalQuantity) {
-		this.totalQuantity = totalQuantity;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-
-
-
 	public double getTotalAmount() {
 		return totalAmount;
 	}
-
-
-
 	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-
-
-
-	public Set<Product> getProductset() {
-		return productset;
-	}
-
-
-
-	public void setProductset(Set<Product> productset) {
-		this.productset = productset;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Order [totalQuantity=" + totalQuantity + ", totalAmount=" + totalAmount + ", productset=" + productset
-				+ "]";
-	}
-
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(productset);
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Ordar other = (Ordar) obj;
-		return Objects.equals(productset, other.productset);
-	}
-
-
-
-	public Ordar(int totalQuantity, double totalAmount, Set<Product> productset) {
-		super();
-		this.totalQuantity = totalQuantity;
+	public Ordar(Long id, Customer customer, double totalAmount) {
+		super(id);
+		this.customer = customer;
 		this.totalAmount = totalAmount;
-		this.productset = productset;
 	}
-
-
-
 	public Ordar() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
-
-	public Ordar(Integer id) {
-		super();
+	public Ordar(Long id) {
+		super(id);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	
+	
+	
+	
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(name="product_order",joinColumns= @JoinColumn(name="order_id")
+//	,inverseJoinColumns = @JoinColumn(name="Prduct_id"))
+//	private Set<Product> productset= new HashSet<Product>();
+
+
+
 	
 	
 	
